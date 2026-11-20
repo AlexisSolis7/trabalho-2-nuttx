@@ -1,0 +1,28 @@
+# Enunciado local da disciplina
+/Segundo Trabalho.pdf
+
+# Configurações e arquivos pessoais
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.vscode/
+.idea/
+
+# Artefatos gerados
+build/
+*.o
+*.a
+*.elf
+*.bin
+*.map
+__pycache__/
+*.pyc
+
+# Arquivos temporários
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
