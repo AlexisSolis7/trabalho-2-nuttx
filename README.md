@@ -12,6 +12,5 @@ Repositório inicial de organização do trabalho. **CONTINUARA...**
 
 ## Objetivo
 
-Desenvolver uma nova interface de serviço do kernel do Apache NuttX, acessível por aplicações e implementada por meio de modificações no próprio sistema operacional, a aplicação de teste servirá para validar essa interface.
-
+Implementar no kernel do NuttX uma função que receba prioridade mínima, máxima e um ponteiro para a contagem. Se a faixa for válida e o ponteiro não for nulo, o NuttX percorre suas tarefas, compara as prioridades e devolve a quantidade. Se a faixa for inválida ou o ponteiro for nulo, retorna erro. A implementação ficará no subsistema de agendamento e o arquivo será incluído na compilação. Aplicação de teste: um exemplo em apps barra examples no mesmo. A aplicação chama a nova interface, imprime o resultado no NuttShell, cria tarefas de teste, consulta antes e depois e testa entradas inválidas. Testes no ESP32 pelo terminal
 
