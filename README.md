@@ -120,3 +120,33 @@ Com essa investigação, entendi como o NuttX armazena as informações das tare
 
 ## Procurando se já existe no nuttx o que eu estou tentando fazer: 
 A pesquisa no código do NuttX não encontrou uma interface pública equivalente a contar tarefas por faixa de prioridade. Foram encontradas apenas funções auxiliares de percurso e consulta individual. Por isso, a nova função proposta representa uma operação ainda não oferecida diretamente pelo sistema.
+
+## Parte de como eu pensei o contrato da função
+
+Nesta parte, defini o contrato da nova função antes de começar a implementação. A função será usada para contar quantas tarefas do NuttX estão dentro de uma determinada faixa de prioridades.
+O nome escolhido foi:
+```c
+int escalonador_contar_faixa_prioridade(int prioridade_min,
+                                        int prioridade_max,
+                                        FAR int *quantidade);
+```
+Os parâmetros têm as seguintes funções:
+- `prioridade_min`: menor prioridade da faixa consultada;
+- `prioridade_max`: maior prioridade da faixa consultada;
+- `quantidade`: endereço onde o resultado da contagem será armazenado.
+A faixa de prioridades será inclusiva. Isso significa que, ao consultar as prioridades de 50 até 100, as tarefas com prioridade exatamente 50 ou 100 também serão contadas.
+O retorno da função será definido assim:
+- `0` quando a consulta for realizada com sucesso;
+- `-EINVAL` quando algum argumento for inválido.
+A função deverá retornar `-EINVAL` quando a prioridade mínima for maior que a máxima:
+```c
+prioridade_min > prioridade_max
+```
+Essa situação representa uma faixa inválida. Por exemplo, não faz sentido informar 100 como prioridade mínima e 50 como prioridade máxima quando estamos considerando a faixa em ordem crescente.
+Também deverá retornar `-EINVAL` quando o ponteiro `quantidade` for nulo:
+```c
+quantidade == NULL
+```
+Nesse caso, não existiria um local válido para armazenar o resultado.
+Aqui estou apenas define como a função será chamada, quais dados receberá e como informará se a operação foi realizada corretamente ou se houve algum erro.
+
