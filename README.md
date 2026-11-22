@@ -116,3 +116,7 @@ nxsched_get_stateinfo() → consulta o estado de uma tarefa
 ```
 
 Com essa investigação, entendi como o NuttX armazena as informações das tarefas, como consulta uma tarefa específica e como percorre todas elas. Esse conhecimento será usado como base para criar uma nova função que conte tarefas dentro de uma determinada faixa de prioridade.
+
+
+## Procurando se já existe no nuttx o que eu estou tentando fazer: 
+A pesquisa no código do NuttX não encontrou uma interface pública equivalente a contar tarefas por faixa de prioridade. Foram encontradas apenas funções auxiliares de percurso e consulta individual. Por isso, a nova função proposta representa uma operação ainda não oferecida diretamente pelo sistema.
