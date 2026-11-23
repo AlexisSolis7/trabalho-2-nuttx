@@ -1,0 +1,29 @@
+#
+# For a description of the syntax of this configuration file,
+# see the file kconfig-language.txt in the NuttX tools repository.
+#
+
+config TASKCOUNT
+	tristate "contador de tarefas por prioridade "
+	default n
+	---help---
+		Ativa o TASKCOUNT para contar tarefas por prioridades
+
+if TASKCOUNT
+
+config TASKCOUNT_PROGNAME
+	string "Nome do programa"
+	default "taskcount"
+	---help---
+		This is the name of the program that will be used when the NSH ELF
+		program is installed.
+
+config TASKCOUNT_PRIORITY
+	int "Prioridade"
+	default 100
+
+config TASKCOUNT_STACKSIZE
+	int "Tamanho da pilha"
+	default DEFAULT_TASK_STACKSIZE
+
+endif
